@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree Sai Computers | Home</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+   
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+
+    <style>
+        
+        :root {
+            /* Updated Color Palette */
+            --brand-Deep-Purple : #2E0F5C	(46, 15, 92); /* Deep Sky Blue */
+            --brand-Vibrant-Yellow: #FFD700	(255, 215, 0);     /* Classic Gold */
+            --brand-dark: #111111;
+            --text-gray: #444;
+            --light-bg: #f9f9f9;
+        }
+
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-gray); overflow-x: hidden; }
+        h1, h2, h3, h4, h5, .logo-text { font-family: 'Montserrat', sans-serif; }
+
+        /* ========== NAVBAR ========== */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: #ffffff;
+            padding: 0 8%;
+            z-index: 999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 68px;
+            border-bottom: 3px solid#2E0F5C;
+            box-shadow: 0 2px 20px rgba(0, 191, 255, 0.12);
+        }
+
+        /* Logo */
+       .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: 2.5px;
+            color: var(--brand-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .logo-text span { color: #2E0F5C; }
+        
+
+        /* Nav list */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            align-items: center;
+            height: 100%;
+        }
+        .nav-links > li {
+            height: 68px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .nav-links > li > a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0 18px;
+            height: 100%;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.5px;
+            color: #2c2c2c;
+            transition: color 0.25s;
+            white-space: nowrap;
+        }
+        .nav-links > li > a:hover,
+        .nav-links > li > a.active-link {
+            color: #2E0F5C	;
+        }
+        .nav-links > li > a.active-link {
+            border-bottom: 3px solid #2E0F5C;
+            margin-bottom: -3px;
+        }
+        .nav-links > li > a i.fa-chevron-down {
+            font-size: 0.65rem;
+            opacity: 0.6;
+            transition: transform 0.25s;
+        }
+        .nav-links > li.dropdown:hover > a i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        /* ========== DROPDOWN LEVEL 1 ========== */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #ffffff;
+            min-width: 220px;
+            border-radius: 0 0 10px 10px;
+            border-top: 3px solid #2E0F5C;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.13);
+            padding: 6px 0;
+            display: none;
+            z-index: 1000;
+            list-style: none;
+        }
+        .dropdown:hover > .dropdown-menu { display: block; }
+
+        .dropdown-menu > li { position: relative; }
+        .dropdown-menu > li > a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 11px 18px;
+            font-size: 0.875rem;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            color: #2c2c2c;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s, padding-left 0.2s;
+        }
+        .dropdown-menu > li > a:hover {
+            background: #f0faff;
+            color: #2E0F5C;
+            padding-left: 22px;
+        }
+        .dropdown-menu > li > a i.fa-chevron-right { font-size: 0.6rem; opacity: 0.5; }
+        .dropdown-menu > li + li { border-top: 1px solid #f2f2f2; }
+
+        /* ========== SUBMENU LEVEL 2 ========== */
+        .submenu { position: relative; }
+        .submenu-menu {
+            position: absolute;
+            top: -6px;
+            left: 100%;
+            background: #ffffff;
+            min-width: 220px;
+            border-radius: 0 10px 10px 10px;
+            border-top: 3px solid  #FFD700;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.13);
+            padding: 6px 0;
+            display: none;
+            list-style: none;
+            z-index: 1001;
+        }
+        .submenu:hover > .submenu-menu { display: block; }
+
+        .submenu-menu > li { position: relative; }
+        .submenu-menu > li > a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 18px;
+            font-size: 0.875rem;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            color: #2c2c2c;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s, padding-left 0.2s;
+        }
+        .submenu-menu > li > a:hover {
+            background: #fffbf0;
+            color: var(--brand-gold);
+            padding-left: 22px;
+        }
+        .submenu-menu > li > a i.fa-chevron-right { font-size: 0.6rem; opacity: 0.5; }
+        .submenu-menu > li + li { border-top: 1px solid #f9f9f9; }
+
+        /* ========== SUBMENU LEVEL 3 ========== */
+        .submenu-item { position: relative; }
+        .submenu-level3 {
+            position: absolute;
+            top: -6px;
+            left: 100%;
+            background: #ffffff;
+            min-width: 180px;
+            border-radius: 0 10px 10px 10px;
+            border-top: 3px solid #111111;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.13);
+            padding: 6px 0;
+            display: none;
+            list-style: none;
+            z-index: 1002;
+        }
+        .submenu-item:hover > .submenu-level3 { display: block; }
+
+        .submenu-level3 > li > a {
+            display: block;
+            padding: 9px 18px;
+            font-size: 0.85rem;
+            font-family: 'Open Sans', sans-serif;
+            color: #444;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s, padding-left 0.2s;
+        }
+        .submenu-level3 > li > a:hover {
+            background: #f0faff;
+            color:#2E0F5C	;
+            padding-left: 24px;
+        }
+
+        /* Dropdown fade animation */
+        .dropdown-menu, .submenu-menu, .submenu-level3 {
+            animation: dropFade 0.22s ease;
+        }
+        @keyframes dropFade {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile toggle button */
+        .menu-toggle {
+            display: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--brand-dark);
+            padding: 6px;
+            border: 1.5px solid #ddd;
+            border-radius: 6px;
+            line-height: 1;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            nav { padding: 0 5%; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                text-align: left;
+                border-bottom: 3px solid#2E0F5C;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+                padding: 10px 0;
+            }
+            .nav-links > li { height: auto; padding: 2px 0; }
+            .nav-links > li > a { padding: 12px 25px; height: auto; border-bottom: none; }
+            .nav-links.active { display: flex; }
+            .dropdown-menu, .submenu-menu, .submenu-level3 {
+                position: static;
+                box-shadow: none;
+                border-top: none;
+                border-radius: 0;
+                padding-left: 18px;
+                display: none;
+                animation: none;
+            }
+            .dropdown:hover > .dropdown-menu,
+            .submenu:hover > .submenu-menu,
+            .submenu-item:hover > .submenu-level3 { display: none; }
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 70vh; width: 100%; position: relative; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; color: #fff; margin-top: 68px;
+        }
+        .hero-slider {
+           background: linear-gradient(rgba(0, 191, 255, 0.85), rgba(0, 50, 100, 0.9));
+            position: absolute; top: 0; left: 0; width: 200%; height: 100%;
+            display: flex; animation: slide 12s infinite ease-in-out;
+        }
+        .slide { width: 50%; height: 100%; background-size: cover; background-position: center; position: relative; }
+        .slide::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 30, 60, 0.7); }
+        @keyframes slide { 0%, 45% { transform: translateX(0); } 55%, 100% { transform: translateX(-50%); } }
+        
+        .hero-content { z-index: 10; padding: 20px; }
+        .hero-content h2 { color:  #FFD700; letter-spacing: 5px; font-size: 1.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero-content h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin: 20px 0; font-weight: 700; }
+        
+        .btn-brand {
+            padding: 15px 35px; background:#2E0F5C	; color: #fff;
+            border: 2px solid #2E0F5C; font-weight: 700; text-transform: uppercase;
+            text-decoration: none; transition: 0.5s; display: inline-block;
+        }
+        .btn-brand:hover { background:  #FFD700; color: #fff; border-color:  #FFD700; }
+        .hero {
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+/* Overlay color */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 191, 255, 0.85);
+    z-index: 2;
+}
+
+
+
+        /* --- SECTION GENERIC --- */
+        section { padding: 80px 0; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-weight: 700; }
+        .section-title span { color: #2E0F5C; }
+        .line { width: 80px; height: 4px; background:  #FFD700; margin: 15px auto; }
+
+        /* --- CARDS & HOVERS --- */
+        .sol-card, .project-card {
+            background: #fff; border: 1px solid #eee; padding: 30px;
+            text-align: center; transition: 0.4s; border-radius: 8px; height: 100%;
+        }
+        .sol-card:hover, .project-card:hover { 
+            transform: translateY(-10px); 
+            border-color: #2E0F5C; 
+            box-shadow: 0 10px 20px rgba(0, 191, 255, 0.1);
+        }
+        .sol-card i, .icon-box i { font-size: 45px; color:#2E0F5C; margin-bottom: 20px; }
+        .text-danger, .bi-check-circle-fill, .bi-award, .bi-diagram-3 { color:#2E0F5C !important; }
+        
+        /* Gold specific accents */
+        .bi-award, .bi-star-fill { color:  #FFD700 !important; }
+
+        /* --- PARTNERS --- */
+        /* --- Trusted Partners Section --- */
+.partners-section {
+    padding: 80px 8%;
+    background-color: #fff;
+    text-align: center;
+}
+
+.partners-title h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.partners-title h2 span {
+    color:#2E0F5C;
+}
+
+.gold-line {
+    width: 60px;
+    height: 3px;
+    background-color: #FFD700;
+    margin: 0 auto 20px;
+}
+
+.partners-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px; /* Space between logos */
+}
+
+.partner-wrapper {
+    flex: 1;
+    min-width: 150px;
+    max-width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.partner-logo {
+    max-width: 150px; /* Adjust based on your design */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+.partner-logo:hover {
+  
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .logo-container {
+        gap: 30px;
+    }
+    .partner-wrapper {
+        min-width: 120px;
+    }
+}
+
+        /* --- CTA BANNER --- */
+        .cta-banner {
+            background: linear-gradient(rgba(0, 191, 255, 0.85), rgba(0, 50, 100, 0.9)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1920');
+            background-size: cover; background-position: center; color: #fff; text-align: center; padding: 100px 20px;
+        }
+        .btn-cta { background: #FFD700; color: #fff; padding: 15px 40px; font-weight: 700; text-decoration: none; border-radius: 5px; transition: 0.3s; }
+        .btn-cta:hover { background: #fff; color:  #FFD700; }
+
+        /* --- FOOTER --- */
+        footer { background: #0a192f; padding: 80px 8% 30px; color: #fff; border-top: 4px solid  #FFD700; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; }
+        .f-col h4 { color: #2E0F5C	(46, 15, 92); margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; }
+        .f-col i { color:  #FFD700; margin-right: 12px; }
+
+        .whatsapp-btn {
+            position: fixed; bottom: 25px; right: 25px; background: #25D366;
+            width: 55px; height: 55px; display: flex; align-items: center;
+            justify-content: center; border-radius: 50%; color: white; font-size: 28px; z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Utility classes for the buttons you had in HTML */
+        .btn-outline-danger { border-color: #2E0F5C; color:#2E0F5C; }
+        .btn-outline-danger:hover { background:#2E0F5C	; border-color:#2E0F5C; color: #fff; }
+        .border-danger { border-color: #FFD700 !important; }
+
+.brand-gradient {
+    background: linear-gradient(45deg, #2E0F5C, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+    </style>
+</head>
+<body>
+<style>.logo-text img {
+    max-height: 45px;
+    object-fit: contain;
+}</style>
+   <nav id="navbar">
+       <img src="logo.jpeg" alt="Hexastra Infotech Logo" style="height: 40px; width: auto;">
+        <div class="menu-toggle" id="mobile-menu" style="color: white;">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="nav-menu">
+    <li><a href="index.html" class="active-link">Home</a></li>
+    
+   <li class="dropdown">
+    <a href="product.html">
+        Product <i class="fas fa-chevron-down"></i>
+    </a>
+
+    <ul class="dropdown-menu">
+
+        <!-- Security Cameras -->
+        <li class="submenu">
+            <a href="#">Security Cameras <i class="fas fa-chevron-right"></i></a>
+
+            <ul class="submenu-menu">
+
+                <li class="submenu-item">
+                    <a href="#">Network Cameras <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">2MP</a></li>
+                        <li><a href="#">4MP</a></li>
+                        <li><a href="#">5MP</a></li>
+                        <li><a href="#">8MP</a></li>
+                        <li><a href="#">Project Models</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu-item">
+                    <a href="#">Network Video Recorder <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">4Ch</a></li>
+                        <li><a href="#">8Ch</a></li>
+                        <li><a href="#">16Ch</a></li>
+                        <li><a href="#">32Ch</a></li>
+                        <li><a href="#">64Ch</a></li>
+                        <li><a href="#">128Ch</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu-item">
+                    <a href="#">Analog HD Camera <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">2.4MP</a></li>
+                        <li><a href="#">5MP</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu-item">
+                    <a href="#">Digital Video Recorder <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">4Ch</a></li>
+                        <li><a href="#">8Ch</a></li>
+                        <li><a href="#">16Ch</a></li>
+                        <li><a href="#">32Ch</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+
+
+        <!-- Biometric System -->
+        <li class="submenu">
+            <a href="#">Biometric System <i class="fas fa-chevron-right"></i></a>
+
+            <ul class="submenu-menu">
+
+                <li class="submenu-item">
+                    <a href="#">Fingerprint <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">N-Series</a></li>
+                        <li><a href="#">V-Series</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu-item">
+                    <a href="#">Face <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">N-Series</a></li>
+                        <li><a href="#">AI-Series</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu-item">
+                    <a href="#">Card <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">Attendance & Access Control</a></li>
+                        <li><a href="#">Access Control</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu-item">
+                    <a href="#">Controller <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">C22</a></li>
+                        <li><a href="#">C32</a></li>
+                        <li><a href="#">C332</a></li>
+                        <li><a href="#">C334</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu-item">
+                    <a href="#">Thermometer <i class="fas fa-chevron-right"></i></a>
+                    <ul class="submenu-level3">
+                        <li><a href="#">BM-IRT</a></li>
+                        <li><a href="#">BM-TDA</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+
+
+        <li><a href="#">Laptops & PCs</a></li>
+        <li><a href="#">Telecom System</a></li>
+        <li><a href="#">Network Gear</a></li>
+        <li><a href="#">Business Software</a></li>
+        <li><a href="#">IT Accessories</a></li>
+
+    </ul>
+</li>
+
+    <li class="dropdown">
+        <a href="service.html">Services <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+            <li><a href="#">CCTV Surveillance</a></li>
+            <li><a href="#">Computers & Laptops</a></li>
+            <li><a href="#">Printers & Accessories</a></li>
+            <li><a href="#">Access Control</a></li>
+            <li><a href="#">Cyber Security</a></li>
+        </ul>
+    </li>
+ <li><a href="aboutus.html">About</a></li>
+    
+    <li><a href="contactus.html">Contact</a></li>
+</ul>
+    </nav>
+
+
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1920');"></div>
+            <div class="slide" style="background-image: url('https://t3.ftcdn.net/jpg/04/93/17/98/360_F_493179828_26653vPOcw9GUbq66jPke6Sfrnuia46Z.jpg');"></div>
+        </div>
+        <div class="hero-content" data-aos="zoom-out">
+            <h2>PROTECT TODAY</h2>
+            <h1>Perform Tomorrow with Smart IT...</h1>
+            <p class="lead mb-4">Reliable | Secure | Scalable</p>
+           <a href="service.html" class="btn-brand me-2">Explore Services</a>
+           
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-md-6" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" class="img-fluid rounded shadow" alt="About Sai Computers">
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="section-title text-start mb-4">
+                        <h2 class="m-0"><span>About Hexastra Infotech</span></h2>
+                        <div class="line ms-0"></div>
+                    </div>
+                    <p>Established in <b>2016</b>,Hexastra Infotech is a trusted IT solutions provider based in Naigaon East, Vasai. We offer a complete range of IT and security solutions for homes and businesses.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-danger me-2"></i> 9+ Years of Industry Experience</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-danger me-2"></i> Certified CCTV Professionals (Nasskill India, CP Plus)</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-danger me-2"></i> Dedicated Team of 14+ Expert Professionals</li>
+                    </ul>
+                    <a href="aboutus.html" class="btn btn-outline-danger px-4 mt-3">Learn More </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section class="bg-light section-padding">
+    <div class="container">
+        <div class="section-title text-center mb-5">
+            <h2><span>Our Services</span></h2>
+            <div class="line mx-auto"></div>
+        </div>
+        
+        <!-- Using g-4 for consistent spacing between cards -->
+        <div class="row g-4">
+            <!-- 1. CCTV Surveillance -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                <div class="sol-card h-100">
+                    <i class="bi bi-shield-lock"></i>
+                    <h5>CCTV Surveillance</h5>
+                    <p class="small text-muted">Advanced camera systems tailored for high-security environments.</p>
+                </div>
+            </div>
+
+            <!-- 2. Computers & Laptops -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="sol-card h-100">
+                    <i class="bi bi-laptop"></i>
+                    <h5>Computers & Laptops</h5>
+                    <p class="small text-muted">Sales, upgrades, and maintenance for enterprise hardware.</p>
+                </div>
+            </div>
+
+            <!-- 3. Printers & Peripherals -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="sol-card h-100">
+                    <i class="bi bi-printer"></i>
+                    <h5>Printers & Peripherals</h5>
+                    <p class="small text-muted">Installation and repair of professional printing hardware.</p>
+                </div>
+            </div>
+
+            <!-- 4. Access Control -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="sol-card h-100">
+                    <i class="bi bi-fingerprint"></i>
+                    <h5>Access Control</h5>
+                    <p class="small text-muted">Biometric and RFID systems for smart asset protection.</p>
+                </div>
+            </div>
+
+            <!-- 5. Cyber Security (NEW) -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="sol-card h-100 ">
+                    <i class="bi bi-shield-check"></i>
+                    <h5>Cyber Security</h5>
+                    <p class="small text-muted">Threat protection, firewall management, and data encryption services.</p>
+                </div>
+            </div>
+
+            <!-- 6. Networking Solutions (NEW - to balance the 3x2 grid) -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                <div class="sol-card h-100">
+                    <i class="bi bi-diagram-3"></i>
+                    <h5>Networking Solutions</h5>
+                    <p class="small text-muted">Structured cabling and robust network infrastructure setup.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <section class="partners-section">
+    <div class="container">
+        <div class="partners-title" data-aos="fade-up">
+            <h2><span>Our Trusted Partners</span></h2>
+            <div class="gold-line"></div>
+            <p class="partners-subtitle">We collaborate with global leaders to deliver top-tier technology.</p>
+        </div>
+
+        <div class="logo-container" data-aos="zoom-in">
+            <div class="partner-wrapper">
+                <img src="data:image/png;base64,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" alt="HP" class="partner-logo">
+            </div>
+            <div class="partner-wrapper">
+                <img src="data:image/png;base64,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" alt="Dell" class="partner-logo">
+            </div>
+            <div class="partner-wrapper">
+                <img src="data:image/png;base64,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" alt="LG" class="partner-logo">
+            </div>
+            <div class="partner-wrapper">
+                <img src="data:image/png;base64,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" alt="Samsung" class="partner-logo">
+            </div>
+            <div class="partner-wrapper">
+                <img src="data:image/png;base64,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" alt="CP Plus" class="partner-logo">
+            </div>
+        </div>
+    </div>
+</section>
+<style>.partner-wrapper {
+    padding: 15px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    transition: 0.3s;
+     border-color:  #FFD700; 
+}
+
+.partner-wrapper:hover {
+    border-color: #FFD700; /* gold color */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}</style>
+
+    <section class="bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2><span>Industries We Serve</span></h2>
+                <div class="line"></div>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="400"><i class="bi bi-house fs-1 text-danger"></i><p class="mt-2 fw-bold">Infrastructure</p></div>
+                <div class="col-6 col-md-2" data-aos="zoom-in"><i class="bi bi-building fs-1 text-danger"></i><p class="mt-2 fw-bold">Manufacturing</p></div>
+                <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="100"><i class="bi bi-book fs-1 text-danger"></i><p class="mt-2 fw-bold">Education</p></div>
+                <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="200"><i class="bi bi-hospital fs-1 text-danger"></i><p class="mt-2 fw-bold">Hospitals</p></div>
+                <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="300"><i class="bi bi-briefcase fs-1 text-danger"></i><p class="mt-2 fw-bold">Corporate</p></div>
+                
+                <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="500"><i class="bi bi-buildings fs-1 text-danger"></i><p class="mt-2 fw-bold">Hotels</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2><span>Projects & Achievements</span></h2>
+                <div class="line"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up">
+                    <div class="project-card text-start">
+                        <div class="icon-box"><i class="bi bi-award"></i></div>
+                        <h5>Certified Expertise</h5>
+                        <p>Certified CCTV Surveillance Project Professionals by <b>Nasskill India</b> & <b>CP Plus</b>. We ensure every installation meets national security standards.</p>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-card text-start">
+                        <div class="icon-box"><i class="bi bi-diagram-3"></i></div>
+                        <h5>Sub-Regional Distribution</h5>
+                        <p>Authorized sub-regional distributor for multiple global brands, ensuring high-quality IT infrastructure for the SME and corporate sectors.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2><span>Customer Testimonials</span></h2>
+                <div class="line"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="p-4 bg-white border-start border-danger border-4 shadow-sm">
+                        <p class="fst-italic">"Hexastra Infotech installed a full CCTV system in our factory — excellent service and quick support!"</p>
+                        <h6 class="mb-0 fw-bold">— Amit S., Manufacturing Client</h6>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="p-4 bg-white border-start border-danger border-4 shadow-sm">
+                        <p class="fst-italic">"Reliable, secure, and very professional. They transformed our office IT infrastructure seamlessly."</p>
+                        <h6 class="mb-0 fw-bold">— Rajesh P., Corporate Partner</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <div class="container" data-aos="zoom-in">
+            <h2 class="display-5 fw-bold mb-3">Ready to Secure Your Business?</h2>
+            <p class="fs-4 mb-5">Call +91 92244 67881 or Chat on WhatsApp for a free quote.</p>
+            <a href="contactus.html" class="btn-cta">Request a Callback</a>
+        </div>
+    </section>
+
+    <footer style="background: #0a192f; color: #ffffff; padding: 80px 8% 30px; border-top: 4px solid #FFD700;">
+        <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px;">
+            
+            <div class="f-col">
+                <h4 style="color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; margin-bottom: 25px; border-left: 3px solid #FFD700; padding-left: 15px;">Hexastra Infotech</h4>
+                <p style="color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
+                    Since 2016, we have been a trusted provider of turnkey IT and security infrastructure. We specialize in high-quality solutions for SMEs and corporate sectors across India.
+                </p>
+                <div class="amc-badge" style="display: inline-block; padding: 5px 12px; border: 1px solid #2E0F5C; color:white; font-size: 12px; font-weight: 700; border-radius: 4px;">
+                    ESTD. 2016
+                </div>
+            </div>
+
+            <div class="f-col">
+                <h4 style="color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; margin-bottom: 25px; border-left: 3px solid #FFD700; padding-left: 15px;">Quick Links</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px;"><i class="fas fa-chevron-right" style="color:  #FFD700; font-size: 0.8rem; margin-right: 10px;"></i><a href="index.html" style="color: #ccc; text-decoration: none; transition: 0.3s;">Home</a></li>
+                    <li style="margin-bottom: 12px;"><i class="fas fa-chevron-right" style="color:  #FFD700; font-size: 0.8rem; margin-right: 10px;"></i><a href="aboutus.html" style="color: #ccc; text-decoration: none; transition: 0.3s;">About Us</a></li>
+                    <li style="margin-bottom: 12px;"><i class="fas fa-chevron-right" style="color:  #FFD700; font-size: 0.8rem; margin-right: 10px;"></i><a href="service.html" style="color: #ccc; text-decoration: none; transition: 0.3s;">Services</a></li>
+                    <li style="margin-bottom: 12px;"><i class="fas fa-chevron-right" style="color:  #FFD700; font-size: 0.8rem; margin-right: 10px;"></i><a href="contactus.html" style="color: #ccc; text-decoration: none; transition: 0.3s;">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="f-col">
+                <h4 style="color:white; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; margin-bottom: 25px; border-left: 3px solid  #FFD700; padding-left: 15px;">Contact Info</h4>
+                <p style="color: #ccc; margin-bottom: 15px; display: flex; align-items: flex-start; font-size: 14px;"><i class="fas fa-map-marker-alt" style="color:  #FFD700; margin-right: 15px; margin-top: 5px;"></i> Naigaon East, Vasai, Maharashtra</p>
+                <p style="color: #ccc; margin-bottom: 15px; display: flex; align-items: center; font-size: 14px;"><i class="fas fa-envelope" style="color:  #FFD700; margin-right: 15px;"></i> connect@hexastra.in</p>
+                <p style="color: #ccc; margin-bottom: 15px; display: flex; align-items: center; font-size: 14px;"><i class="fas fa-phone-alt" style="color:  #FFD700; margin-right: 15px;"></i> +91 92244 67881</p>
+            </div>
+
+            <div class="f-col">
+                <h4 style="color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; margin-bottom: 25px; border-left: 3px solid  #FFD700; padding-left: 15px;">Follow Us</h4>
+                <p style="color: #ccc; margin-bottom: 20px; font-size: 14px;">Connect with us for the latest IT updates and security solutions.</p>
+                <div class="social-links" style="display: flex; gap: 15px;">
+                    <a href="#" style="width: 38px; height: 38px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #2E0F5C; text-decoration: none; transition: 0.3s; border: 1px solid rgba(0,191,255,0.3);"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="width: 38px; height: 38px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border-radius: 50%; color:#2E0F5C; text-decoration: none; transition: 0.3s; border: 1px solid rgba(0,191,255,0.3);"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="width: 38px; height: 38px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #2E0F5C; text-decoration: none; transition: 0.3s; border: 1px solid rgba(0,191,255,0.3);"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="copyright" style="text-align: center; margin-top: 60px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: #777; letter-spacing: 1px;">
+            © 2026 <span style="color:  #FFD700; font-weight: 700;">Hexastra Infotech</span>. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919224467881" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+     <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        // Navbar Scroll Effect
+        window.onscroll = function() {
+            var nav = document.getElementById('navbar');
+            if (window.pageYOffset > 100) {
+                nav.style.boxShadow = "0 5px 20px rgba(0,0,0,0.1)";
+            } else {
+                nav.style.boxShadow = "none";
+            }
+        };
+
+</script>
+<script>
+    // Initialize Animations
+    AOS.init({ duration: 1000, once: true });
+
+    const menuBtn = document.getElementById("mobile-menu");
+    const navMenu = document.getElementById("nav-menu");
+
+    // Toggle Mobile Main Menu
+    menuBtn.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+    });
+
+    // Mobile Dropdown Logic (Click to open sub-menus on mobile)
+    const dropdowns = document.querySelectorAll('.dropdown, .nested-dropdown, .nested-dropdown-stage3');
+    
+    dropdowns.forEach(drop => {
+        drop.addEventListener('click', function(e) {
+            if (window.innerWidth <= 991) {
+                e.stopPropagation(); // Prevents closing the whole menu
+                this.classList.toggle('active');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
